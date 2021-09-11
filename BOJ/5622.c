@@ -1,8 +1,9 @@
-// A 65
-// S 면 7 고정
-// 
 #include <stdio.h>
 
+/*
+** 모든 문자값은 ascii 즉, int이다.
+** 모든 int는 사칙연산이 가능하다.
+*/
 int fn_get_time_for_dial(char *s)
 {
 	int ret = 0, ix = 0, tmp;
