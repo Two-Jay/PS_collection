@@ -33,7 +33,3 @@ int main (void)
 	printf("%llu\n", fn_get_sumarr(a));
 	return (0);
 }
-
-
-
-
