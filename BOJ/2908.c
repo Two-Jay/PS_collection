@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 void fn_reverse(int *a)
 {

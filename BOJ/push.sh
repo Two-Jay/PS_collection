@@ -1,0 +1,1 @@
+git add $1.c; git commit -m "BOJ $1 solved"; git push origin master
