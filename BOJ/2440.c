@@ -6,13 +6,11 @@ int main (void)
 	int N;
 	
 	scanf("%d", &N);
-	star[N] = '\0';
-	for (int i = 0; i < N; i++)
-		star[i] = '*';
-	for (int i = 0; i < N; i++)
+	for (int i = N; i > 0; i--)
 	{
-		if (i > 0)
-			star[i - 1] = ' ';
+		for (int j = 0; j < i; j++)
+			star[j] = '*';
+		star[i] = '\0';
 		printf("%s\n", star);
 	}
 	return (0);
