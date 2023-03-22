@@ -1,0 +1,43 @@
+-- Title : 식품분류별 가장 비싼 식품의 정보 조회하기
+-- Level : 4
+-- Category : 프로그래머스
+-- URL : https://school.programmers.co.kr/learn/courses/30/lessons/131116
+-- =================================================================
+/*
+테이블 구조
+
+Table FOOD_PRODUCT {
+  PRODUCT_ID  VARCHAR(10)
+  PRODUCT_NAME  VARCHAR(50)
+  PRODUCT_CD  VARCHAR(10)
+  CATEGORY  VARCHAR(10)
+  PRICE NUMBER
+}
+*/
+
+WITH MOST_EXPENSIVE_GOODS AS (
+    SELECT MAX(PRICE) AS MAX_PRICE 
+    FROM FOOD_PRODUCT AS foods
+    GROUP BY CATEGORY
+)
+
+SELECT CATEGORY, MAX_PRICE, PRODUCT_NAME
+FROM FOOD_PRODUCT, MOST_EXPENSIVE_GOODS
+WHERE FOOD_PRODUCT.PRICE = MOST_EXPENSIVE_GOODS.MAX_PRICE AND FOOD_PRODUCT.CATEGORY IN ("과자", "국", "김치", "식용유")
+GROUP BY CATEGORY
+ORDER BY MAX_PRICE DESC
+
+/*
+WITH 구문을 사용하면 훨씬 간단하게 풀 수 있다.
+*/
+
+SELECT CATEGORY, PRICE MAX_PRICE, PRODUCT_NAME
+FROM FOOD_PRODUCT
+WHERE PRICE IN
+    (
+    SELECT MAX(PRICE) MAX_PRICE
+    FROM FOOD_PRODUCT
+    GROUP BY CATEGORY
+    )
+AND CATEGORY IN ('과자', '국', '김치', '식용유')
+ORDER BY 2 DESC
